@@ -9,4 +9,5 @@ Managed with [GNU stow](https://www.gnu.org/software/stow/)
     cd ~
     git clone >LinkToThisRepo<
     cd dotfiles
+    # Remove README.md
     stow *
