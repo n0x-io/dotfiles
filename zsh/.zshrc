@@ -19,6 +19,9 @@ export ZSH="/home/n0x/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
 
+export PATH=$PATH:~/.local/bin
+
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 HIST_STAMPS="yyyy-mm-dd"

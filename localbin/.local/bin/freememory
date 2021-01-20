@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# simple script to show systemmemory in dwmblocks
+
+free -h | awk '/^Mem/ { print $3"/"$2 }' | sed s/i//g
