@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'arcticicestudio/nord-vim'
 Plug 'mbbill/undotree'
+Plug 'hugolgst/vimsence'
 call plug#end()
 
 " colorscheme stuff "
