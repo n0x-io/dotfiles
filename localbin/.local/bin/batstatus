@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# get battery percentage and current time remaining
-
-#acpi | awk -F '[, :]' '{print $6 " ~" $8":"$9}'
-acpi | awk -F '[, :]' '{ print $6 }'

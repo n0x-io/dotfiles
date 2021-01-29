@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/usr/bin/maim -s ~/Pictures/Screenshot_$(date +%Y%m%d_%H:%M:%S).jpg

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+icon=""
+hdd1="$(df / | awk '/^\// { print $5 }')"
+hdd2="$(df /home | awk '/^\// { print $5 }')"
+
+printf " %s / %s | %s /home %s \\n" "$icon" "$hdd1" "$icon" "$hdd2"
+
