@@ -4,6 +4,6 @@ nvim/.config/nvim/plugged*
 nvim/.config/nvim/undodir/*
 !nvim/.config/nvim/undodir/.gitkeep
 nvim/.local/share/nvim/shada*
-
+nvim/.config/coc*
 #exlude cache dir for oh-my-zsh
 zsh/.oh-my-zsh/cache/

@@ -1,6 +1,4 @@
 #!/bin/sh
-export PATH=$PATH:~/.local/bin
-
 # Start dwmblocks as statusbar
 dwmblocks &
 
