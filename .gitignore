@@ -1,9 +1,1 @@
-# exclude plugged dir to avoid git conflicts
-nvim/.config/nvim/plugged*
-# exclude undodir content but keep directory
-nvim/.config/nvim/undodir/*
-!nvim/.config/nvim/undodir/.gitkeep
-nvim/.local/share/nvim/shada*
-nvim/.config/coc*
-#exlude cache dir for oh-my-zsh
-zsh/.oh-my-zsh/cache/
+*
