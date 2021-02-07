@@ -44,6 +44,9 @@ picom -f &
 # restore wallpaper
 nitrogen --restore & 
 
+# fix java for java is being java....
+export AWT_TOOLKIT=MToolkit
+
 # execture dwm
 while true; do
     dwm >/dev/null 2>&1

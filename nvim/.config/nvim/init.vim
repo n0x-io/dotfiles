@@ -14,13 +14,16 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 
+set nowrap
 
 " Plugin stuff "
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim'
 Plug 'vim-airline/vim-airline'
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'arcticicestudio/nord-vim'
+Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
 Plug 'hugolgst/vimsence'
 call plug#end()
@@ -37,23 +40,16 @@ let g:vimsence_editing_state = 'Working on: {}'
 " Keybinds "
 let mapleader = " "
 
-"inoremap <silent><expr> <TAB> 
-"    \ pumvisible() ? "\<C-n>" :
-"    \ <SID>check_back_space() ? "\<TAB>" :
-"    \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"function! s:check_back_space() abort
-"    let col = col('.') - 1
-"    return !col || getline('.')[col - 1] =~# '\s'
-"endfunction
-
-"inoremap <silent><expr> <c-space> coc#refresh()
-
+" quickly move between editors
 nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader><Left> :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader><Down> :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader><Up> :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader><Right> :wincmd l<CR>
+
 " Undotree "
 nnoremap <leader>u :UndotreeToggle<CR>
 " NERDTree "
@@ -62,3 +58,9 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
+
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "nord"
+
+let g:coc_global_extensions = ['coc-git', 'coc-tsserver', 'coc-clangd', 'coc-java', 'coc-sql', 'coc-spell-checker']
