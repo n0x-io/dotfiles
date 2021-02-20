@@ -1,0 +1,18 @@
+#!/bin/bash
+icon="龍"
+iface="enp4s0"
+up=""
+down=""
+
+R1="$(cat /sys/class/net/$iface/statistics/rx_bytes)"
+T1="$(cat /sys/class/net/$iface/statistics/tx_bytes)"
+sleep 1
+R2="$(cat /sys/class/net/$iface/statistics/rx_bytes)"
+T2="$(cat /sys/class/net/$iface/statistics/tx_bytes)"
+TBPS="$(expr $T2 - $T1)"
+RBPS="$(expr $R2 - $R1)"
+TKBPS="$(expr $TBPS / 1024)"
+RKBPS="$(expr $RBPS / 1024)"
+
+printf " %s %s %skB/s %s %skB/s \\n" "$icon" "$up" "$TKBPS" "$down" "$RKBPS"
+#echo "tx $iface: $TKBPS kB/s rx $iface: $RKBPS kB/s"

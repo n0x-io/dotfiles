@@ -1,5 +1,5 @@
 # show hidden files
-set hidden true 
+set hidden false 
 set icons
 
 
@@ -47,7 +47,8 @@ cmd open ${{
         #Text handling
         text/*) $EDITOR $fx;;
         #Image handling
-        image/*) sxiv -a $fx 2>/dev/null ;;
+        #image/*) sxiv -a $fx 2>/dev/null ;;
+        image/*) eog $fx 2>/dev/null ;;
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
