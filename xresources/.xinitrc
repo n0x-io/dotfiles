@@ -45,7 +45,7 @@ picom -f &
 nitrogen --restore & 
 
 # start autolocker
-xautolock -time 5 -locker slock &
+xautolock -time 10 -locker slock &
 
 # fix java for java is being java....
 export AWT_TOOLKIT=MToolkit

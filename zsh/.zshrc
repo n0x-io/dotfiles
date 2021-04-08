@@ -15,6 +15,7 @@ fi
 alias nv="nvim"
 alias vim="nvim"
 alias sc="maim -s ~/Pictures/$(date +%s).png"
+alias ff="firefox-nightly"
 
 # exporty
 export EDITOR=nvim

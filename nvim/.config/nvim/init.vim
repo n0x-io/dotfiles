@@ -25,7 +25,7 @@ Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'arcticicestudio/nord-vim'
 Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
-#Plug 'hugolgst/vimsence'
+"Plug 'hugolgst/vimsence'"
 call plug#end()
 
 " colorscheme stuff "
