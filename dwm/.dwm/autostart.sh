@@ -1,6 +1,6 @@
 #!/bin/sh
-# Start dwmblocks as statusbar
-dwmblocks &
+# Start statusbar script
+statusbar &
 
 # Start dunst as notificationserver
 dunst &

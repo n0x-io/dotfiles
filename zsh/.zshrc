@@ -2,7 +2,6 @@
 if [[ $UID -ge 1000 && -d $HOME/.local/bin && -z $(echo $PATH | grep -o $HOME/.local/bin) ]]
 then
     export PATH="$HOME/.local/bin:${PATH}"
-    export PATH="$HOME/.local/bin/dwmscript:${PATH}"
 fi
 
 # start x -> starts dwm within .xinitrc
