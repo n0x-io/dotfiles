@@ -25,7 +25,7 @@ Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'arcticicestudio/nord-vim'
 Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
-"Plug 'hugolgst/vimsence'"
+Plug 'hugolgst/vimsence'
 call plug#end()
 
 " colorscheme stuff "
@@ -35,7 +35,6 @@ let g:vimsence_small_text = 'NeoVim'
 let g:vimsence_small_image = 'neovim'
 let g:vimsence_editing_details = 'Editing: {}'
 let g:vimsence_editing_state = 'Working on: {}'
-
 
 " Keybinds "
 let mapleader = " "
