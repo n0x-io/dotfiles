@@ -1,9 +1,0 @@
-#!/bin/bash
-
-icon=""
-iface="enp4s0"
-
-IPADDR="$(ip a show dev $iface | awk '/inet / { print $2 } ')"
-
-printf " %s %s [%s] \n" "$icon" "$iface" "$IPADDR"
-#echo "tx $iface: $TKBPS kB/s rx $iface: $RKBPS kB/s"

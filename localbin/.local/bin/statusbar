@@ -1,0 +1,75 @@
+#!/bin/bash
+
+interval=0
+
+datetime() {
+    icon=""
+    time="$(date "+%a, %d %b %H:%M")"
+    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$time"
+}
+
+battery() {
+    icon=""
+    battery="$(acpi | awk -F '[, :]' '{ print $6 }')" # without time
+    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$battery"
+}
+
+cpu() {
+    icon=""
+    read cpu a b c previdle rest < /proc/stat
+    prevtotal=$((a+b+c+previdle))
+    sleep 0.5
+    read cpu a b c idle rest < /proc/stat
+    total=$((a+b+c+idle))
+    cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$cpu%"
+}
+
+memory() {
+    icon=""
+    mem="$(free -h | awk '/^Mem/ { print $3"/"$2 }' | sed s/i//g)"
+    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$mem"
+}
+
+disk() {
+    icon=""
+    root="$(df / | awk '/^\// { print $5 }')"
+    home="$(df /home | awk '/^\// { print $5 }')"
+    printf "^b#408977^^c#eeeeee^ %s ^d^ / %s | /home %s" "$icon" "$root" "$home"
+}
+
+networkspeed() {
+    icon="龍"
+    iface="enp4s0"
+    up=""
+    down=""
+    R1="$(cat /sys/class/net/$iface/statistics/rx_bytes)"
+    T1="$(cat /sys/class/net/$iface/statistics/tx_bytes)"
+    sleep 1
+    R2="$(cat /sys/class/net/$iface/statistics/rx_bytes)"
+    T2="$(cat /sys/class/net/$iface/statistics/tx_bytes)"
+    TBPS="$(expr $T2 - $T1)"
+    RBPS="$(expr $R2 - $R1)"
+    TKBPS="$(expr $TBPS / 1024)"
+    RKBPS="$(expr $RBPS / 1024)"
+    printf "^b#408977^^c#eeeeee^ %s ^d^ %s %skB/s %s %skB/s" "$icon" "$up" "$TKBPS" "$down" "$RKBPS"
+}
+
+networkinfo() {
+    icon=""
+    iface="enp4s0"
+    IPADDR="$(ip a show dev $iface | awk '/inet / { print $2 } ')"
+    printf "^b#408977^^c#eeeeee^ %s ^d^ %s [%s]" "$icon" "$iface" "$IPADDR"
+}
+
+song() {
+    icon=""
+    song=$(playerctl --player=spotify,mpd metadata title)
+    artist=$(playerctl --player=spotify,mpd metadata artist)
+    printf "^b#408977^^c#eeeeee^ %s ^d^ %s - %s" "$icon" "$artist" "$song"
+}
+
+while true; do 
+    xsetroot -name " $(cpu) $(memory) $(networkspeed) $(networkinfo) $(disk) $(song) $(datetime)"
+    sleep 5
+done
