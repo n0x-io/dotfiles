@@ -46,14 +46,14 @@ nitrogen --restore &
 
 # start autolocker
 xautolock -time 10 -locker slock &
+xset s off &
+
+# auto disk mounting
+udiskie &
 
 # fix java for java is being java....
 export AWT_TOOLKIT=MToolkit
+export GTK_THEME=Breeze:dark
 
 # execture dwm
-while true; do
-    dwm >/dev/null 2>&1
-    setxkbmap de 
-done
-
-exec dwm
+dwm >/dev/null 2>&1
