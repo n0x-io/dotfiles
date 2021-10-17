@@ -70,6 +70,7 @@ song() {
 }
 
 while true; do 
-    xsetroot -name " $(cpu) $(memory) $(networkspeed) $(networkinfo) $(disk) $(song) $(datetime)"
+    xsetroot -name "   $(cpu) $(memory) $(networkspeed) $(networkinfo) $(disk) $(song) $(datetime) "
     sleep 5
 done
+
