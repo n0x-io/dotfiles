@@ -56,4 +56,6 @@ export AWT_TOOLKIT=MToolkit
 export GTK_THEME=Breeze:dark
 
 # execture dwm
-dwm >/dev/null 2>&1
+while true; do
+    dwm >/dev/null 2>&1
+done
