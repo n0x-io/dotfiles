@@ -9,7 +9,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     startx
 fi
 
-
 # Alias
 alias nv="nvim"
 alias vim="nvim"
@@ -24,7 +23,7 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# exporty
+# export trickery
 export EDITOR=nvim
 export ZSH="/home/n0x/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8  
@@ -45,8 +44,8 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-#ZSH_TMUX_AUTOSTART=true
 
+#ZSH_TMUX_AUTOSTART=true
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -57,4 +56,3 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.config/lf/icons ] && source ~/.config/lf/icons
 
-#[[ ! -f ~/dotfiles/zsh/.p10k.zsh ]] || source ~/dotfiles/zsh/.p10k.zsh
