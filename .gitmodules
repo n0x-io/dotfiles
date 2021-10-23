@@ -7,3 +7,16 @@
 [submodule "zsh/.oh-my-zsh/custom/themes/powerlevel10k"]
 	path = zsh/.oh-my-zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "nord-tmux"]
+    path = tmux/.tmux/plugins/nord-tmux
+	url = https://git::@github.com/arcticicestudio/nord-tmux
+    fetch = +refs/heads/develop:refs/remotes/origin/develop
+[submodule "tmux-sensible"]
+    path = tmux/.tmux/plugins/tmux-sensible
+    url = https://git::@github.com/tmux-plugins/tmux-sensible
+    fetch = +refs/heads/master:refs/remotes/origin/master
+[submodule "tpm"]
+    path = tmux/.tmux/plugins/tpm
+    url = https://github.com/tmux-plugins/tpm
+    fetch = +refs/heads/*:refs/remotes/origin/*
+
