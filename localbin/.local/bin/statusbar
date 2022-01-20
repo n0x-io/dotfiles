@@ -6,13 +6,13 @@ interface="wlo1"
 datetime() {
     icon=""
     time="$(date "+%a, %d %b %H:%M")"
-    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$time"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s" "$icon" "$time"
 }
 
 battery() {
     icon=""
     battery="$(acpi | awk -F '[, :]' '{ print $6 }')" # without time
-    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$battery"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s" "$icon" "$battery"
 }
 
 cpu() {
@@ -23,20 +23,20 @@ cpu() {
     read cpu a b c idle rest < /proc/stat
     total=$((a+b+c+idle))
     cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$cpu%"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s" "$icon" "$cpu%"
 }
 
 memory() {
     icon=""
     mem="$(free -h | awk '/^Mem/ { print $3"/"$2 }' | sed s/i//g)"
-    printf "^b#408977^^c#eeeeee^ %s ^d^ %s" "$icon" "$mem"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s" "$icon" "$mem"
 }
 
 disk() {
     icon=""
     root="$(df / | awk '/^\// { print $5 }')"
     home="$(df /home | awk '/^\// { print $5 }')"
-    printf "^b#408977^^c#eeeeee^ %s ^d^ / %s | /home %s" "$icon" "$root" "$home"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ / %s | /home %s" "$icon" "$root" "$home"
 }
 
 networkspeed() {
@@ -52,24 +52,24 @@ networkspeed() {
     RBPS="$(expr $R2 - $R1)"
     TKBPS="$(expr $TBPS / 1024)"
     RKBPS="$(expr $RBPS / 1024)"
-    printf "^b#408977^^c#eeeeee^ %s ^d^ %s %skB/s %s %skB/s" "$icon" "$up" "$TKBPS" "$down" "$RKBPS"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s %skB/s %s %skB/s" "$icon" "$up" "$TKBPS" "$down" "$RKBPS"
 }
 
 networkinfo() {
     icon=""
     IPADDR="$(ip a show dev $interface | awk '/inet / { print $2 } ')"
-    printf "^b#408977^^c#eeeeee^ %s ^d^ %s [%s]" "$icon" "$interface" "$IPADDR"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s [%s]" "$icon" "$interface" "$IPADDR"
 }
 
 song() {
     icon=""
     song=$(playerctl --player=spotify,mpd metadata title)
     artist=$(playerctl --player=spotify,mpd metadata artist)
-    printf "^b#408977^^c#eeeeee^ %s ^d^ %s - %s" "$icon" "$artist" "$song"
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s - %s" "$icon" "$artist" "$song"
 }
 
 while true; do 
-    xsetroot -name "   $(cpu) $(memory) $(networkinfo) $(disk) $(battery) $(datetime) "
-    sleep 5
+    xsetroot -name " $(cpu) $(memory) $(networkinfo) $(disk) $(battery) $(datetime) "
+    sleep 8
 done
 
