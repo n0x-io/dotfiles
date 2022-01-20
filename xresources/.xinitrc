@@ -42,7 +42,7 @@ setxkbmap de &
 picom -f &
 
 # restore wallpaper
-nitrogen --restore & 
+~/.fehbg &
 
 # start autolocker
 xautolock -time 10 -locker slock &
