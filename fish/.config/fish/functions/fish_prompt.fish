@@ -50,18 +50,20 @@ end
 function fish_prompt
   set -l last_status $status
 
+  # username and hostname
   _print_in_color "┏["$USER"@"(prompt_hostname)"]" blue
 
+  # current working dir
   _print_in_color " "$PWD $fish_color_cwd
-
-#   "%s%s@%s %s%s%s"$USER(prompt_hostname)(set_color $fish_color_cwd)$PWD blue
-#  set_color normal
 
   __fish_git_prompt " (%s)"
 
+  # beginning of new line
   _print_in_color "\r\n┗" blue
 
+  # time information
   _print_in_color " "(date "+%H:%M:%S") green
 
+  # little error that indicates the status of the previous command
   _print_in_color " ❯ " (_prompt_color_for_status $last_status)
 end
