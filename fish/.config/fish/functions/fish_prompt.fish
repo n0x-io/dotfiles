@@ -1,20 +1,67 @@
-function fish_prompt --description 'Informative prompt'
-    #Save the return status of the previous command
-    set -l last_pipestatus $pipestatus
-    set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
+set fish_prompt_pwd_dir_length 1
+set __fish_git_prompt_show_informative_status 1
 
-    if functions -q fish_is_root_user; and fish_is_root_user
-        printf '%s@%s %s%s%s# ' $USER (prompt_hostname) (set -q fish_color_cwd_root
-                                                         and set_color $fish_color_cwd_root
-                                                         or set_color $fish_color_cwd) \
-            (prompt_pwd) (set_color normal)
-    else
-        set -l status_color (set_color $fish_color_status)
-        set -l statusb_color (set_color --bold $fish_color_status)
-        set -l pipestatus_string (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
+# Fish command and parameter colors
+set fish_color_command green
+set fish_color_param $fish_color_normal
 
-        printf '[%s] %s%s@%s %s%s %s%s%s \n> ' (date "+%H:%M:%S") (set_color brblue) \
-            $USER (prompt_hostname) (set_color $fish_color_cwd) $PWD $pipestatus_string \
-            (set_color normal)
-    end
+# Git prompt
+set __fish_git_prompt_showdirtystate 'yes'
+set __fish_git_prompt_showupstream 'yes'
+
+set __fish_git_prompt_color_branch brown
+set __fish_git_prompt_color_dirtystate FCBC47
+set __fish_git_prompt_color_stagedstate yellow
+set __fish_git_prompt_color_upstream cyan
+set __fish_git_prompt_color_cleanstate green
+set __fish_git_prompt_color_invalidstate red
+
+# Git Characters
+set __fish_git_prompt_char_dirtystate '*'
+set __fish_git_prompt_char_stateseparator ' '
+set __fish_git_prompt_char_untrackedfiles ' …'
+set __fish_git_prompt_char_cleanstate '✓'
+set __fish_git_prompt_char_stagedstate '⇢ '
+set __fish_git_prompt_char_conflictedstate "✕"
+
+set __fish_git_prompt_char_upstream_prefix ''
+set __fish_git_prompt_char_upstream_equal ''
+set __fish_git_prompt_char_upstream_ahead '⇡'
+set __fish_git_prompt_char_upstream_behind '⇣'
+set __fish_git_prompt_char_upstream_diverged '⇡⇣'
+
+function _print_in_color
+  set -l string $argv[1]
+  set -l color  $argv[2]
+
+  set_color $color
+  printf $string
+  set_color normal
+end
+
+function _prompt_color_for_status
+  if test $argv[1] -eq 0
+    echo magenta
+  else
+    echo red
+  end
+end
+
+function fish_prompt
+  set -l last_status $status
+
+  _print_in_color "┏["$USER"@"(prompt_hostname)"]" blue
+
+  _print_in_color " "$PWD $fish_color_cwd
+
+#   "%s%s@%s %s%s%s"$USER(prompt_hostname)(set_color $fish_color_cwd)$PWD blue
+#  set_color normal
+
+  __fish_git_prompt " (%s)"
+
+  _print_in_color "\r\n┗" blue
+
+  _print_in_color " "(date "+%H:%M:%S") green
+
+  _print_in_color " ❯ " (_prompt_color_for_status $last_status)
 end
