@@ -25,3 +25,7 @@ end
 function ds 
     command du -sch * | sort -rh
 end
+
+function sudo
+    command doas $argv
+end
