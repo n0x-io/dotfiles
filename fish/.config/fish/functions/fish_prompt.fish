@@ -1,4 +1,4 @@
-set fish_prompt_pwd_dir_length 1
+set fish_prompt_pwd_dir_length 0
 set __fish_git_prompt_show_informative_status 1
 
 # Fish command and parameter colors
@@ -54,7 +54,7 @@ function fish_prompt
   _print_in_color "┏["$USER"@"(prompt_hostname)"]" blue
 
   # current working dir
-  _print_in_color " "$PWD $fish_color_cwd
+  _print_in_color " "(prompt_pwd) $fish_color_cwd
 
   __fish_git_prompt " (%s)"
 
