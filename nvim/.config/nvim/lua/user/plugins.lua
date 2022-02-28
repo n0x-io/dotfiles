@@ -73,6 +73,11 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
 
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
   -- nvim-tree
   use {
     'kyazdani42/nvim-tree.lua',
