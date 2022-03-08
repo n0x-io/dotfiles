@@ -18,8 +18,21 @@ function cnas
     curlftpfs 10.0.0.250 ~/NAS -o ssl,no_verify_peer,no_verify_hostname,uid=1000,gid=1000,umask=022
 end
 
+function ls 
+    lsd $argv --group-dirs first
+end
+
+function ll 
+    lsd -lha $argv --group-dirs first 
+end
+
+sch
 function l
-    command ls -lah --color=auto $argv
+    lsd -lh $argv --group-dirs first 
+end
+
+function tree
+    lsd --tree $argv 
 end
 
 function ds 
