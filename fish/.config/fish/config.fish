@@ -26,7 +26,6 @@ function ll
     lsd -lha $argv --group-dirs first 
 end
 
-sch
 function l
     lsd -lh $argv --group-dirs first 
 end
