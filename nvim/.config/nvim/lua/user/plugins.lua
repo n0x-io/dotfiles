@@ -87,6 +87,11 @@ return packer.startup(function(use)
     config = function() require'nvim-tree'.setup {} end
   }
 
+  --
+  use {
+    'lewis6991/gitsigns.nvim',
+  }
+
   -- Bufferline
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
