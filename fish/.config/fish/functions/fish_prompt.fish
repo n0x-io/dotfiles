@@ -59,7 +59,7 @@ function fish_prompt
   __fish_git_prompt " (%s)"
 
   # beginning of new line
-  _print_in_color "\r\n┗" blue
+  _print_in_color "\n┗" blue
 
   # time information
   _print_in_color " "(date "+%H:%M:%S") green
