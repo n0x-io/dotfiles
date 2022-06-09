@@ -96,11 +96,10 @@ keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader><leader>f", "<cmd>Format<cr>", opts)
 
 -- close buffer --
-keymap("n", "<leader>q", "<cmd>Bdelete! %d<cr>",opts)
+keymap("n", "<leader>q", "<cmd>Bdelete! %d<cr>", opts)
 
 -- toggle whitespace --
 keymap("n", "<leader>w", "<cmd>set list!<cr>", opts)
 
 -- toggle gitsign line blame --
 keymap("n", "<leader>g", "<cmd>Gitsigns toggle_current_line_blame<cr>", opts)
-

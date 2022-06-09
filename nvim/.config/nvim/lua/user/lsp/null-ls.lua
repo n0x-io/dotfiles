@@ -11,7 +11,10 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup {
   debug = false,
   sources = {
-    formatting.clang_format,
+    formatting.clang_format.with({
+        extra_filetypes = {"inl"},
+        extra_args = {"-style=file:~/.config/nvim/lua/user/lsp/settings/clang-format"},
+        }),
     diagnostics.gccdiag,
   },
 }
