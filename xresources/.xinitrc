@@ -6,7 +6,7 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-startx
+    startx
 fi
 
 # merge in defaults and keymaps
@@ -44,9 +44,13 @@ picom -f &
 # restore wallpaper
 ~/.fehbg &
 
+# set display brightness for secondary monitor
+xrandr --output DP-2 --brightness .9 &
+
 # start autolocker
 xautolock -time 10 -locker slock &
-xset s off &
+xset -dpms &
+xset r rate 300 50 &
 
 # auto disk mounting
 udiskie &

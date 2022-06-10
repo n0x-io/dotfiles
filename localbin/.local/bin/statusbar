@@ -1,7 +1,7 @@
 #!/bin/bash
 
 interval=0
-interface="wlo1"
+interface="enp4s0"
 
 datetime() {
     icon=""
@@ -69,7 +69,7 @@ song() {
 }
 
 while true; do 
-    xsetroot -name " $(cpu) $(memory) $(networkinfo) $(disk) $(battery) $(datetime) "
+    xsetroot -name " $(cpu) $(memory) $(networkspeed) $(networkinfo) $(disk) $(song) $(datetime) "
     sleep 8
 done
 
