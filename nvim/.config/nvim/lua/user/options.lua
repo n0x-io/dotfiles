@@ -47,5 +47,5 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
-vim.cmd "set listchars=space:·"
+vim.cmd "set listchars=tab:\\ \\ ,space:·"
 --vim.cmd "set term=screen-256color"
