@@ -2,6 +2,11 @@ if [ -z "$DISPLAY" ] && [ (fgconsole) -eq 1 ];
     startx
 end
 
+if status is-interactive
+and not set -q TMUX
+    exec tmux
+end
+
 function q
     exit
 end
