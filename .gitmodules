@@ -1,5 +1,5 @@
 [submodule "nord-tmux"]
-    path = tmux/.tmux/plugins/nord-tmuxurl
+    path = tmux/.tmux/plugins/nord-tmux
     url = https://git::@github.com/arcticicestudio/nord-tmux
     fetch = +refs/heads/develop:refs/remotes/origin/develop
 [submodule "tmux-sensible"]
