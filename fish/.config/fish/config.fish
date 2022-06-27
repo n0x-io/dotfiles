@@ -7,6 +7,8 @@ and not set -q TMUX
     exec tmux
 end
 
+fish_ssh_agent
+
 function q
     exit
 end
