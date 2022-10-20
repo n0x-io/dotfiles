@@ -91,9 +91,11 @@ return packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim'
 
     -- Bufferline
-    use "akinsho/bufferline.nvim"
-    use "moll/vim-bbye"
+    use 'akinsho/bufferline.nvim'
+    use 'moll/vim-bbye'
 
+    -- VimWiki
+    use { 'vimwiki/vimwiki', branch='dev'}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
