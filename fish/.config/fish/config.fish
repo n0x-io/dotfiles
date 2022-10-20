@@ -45,3 +45,10 @@ function ds
     command du -sch * | sort -rh
 end
 
+function hv
+    command nmcli --ask connection up "HP VPN"
+end
+
+function hvd
+    command nmcli connection down "HP VPN"
+end

@@ -5,10 +5,6 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    startx
-fi
-
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -50,6 +46,7 @@ xrandr --output DP-2 --brightness .9 &
 # start autolocker
 xautolock -time 10 -locker slock &
 xset -dpms &
+xset s off &
 xset r rate 300 50 &
 
 # auto disk mounting
