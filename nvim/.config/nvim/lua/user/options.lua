@@ -49,4 +49,4 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd "set listchars=tab:\\ \\ ,space:·"
 --vim.cmd "set term=screen-256color"
-vim.g.vimwiki_list = {{path = '~/vimwiki', syntax = 'markdown', ext = '.md'}}
+vim.g.vimwiki_list = {{path = '~/Documents/vimwiki', syntax = 'markdown', ext = '.md'}}
