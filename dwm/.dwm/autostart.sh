@@ -7,3 +7,9 @@ dunst &
 
 # Start the nextcloud client in the background
 /usr/bin/nextcloud --background &
+
+# start bitwarden
+/usr/bin/bitwarden-desktop &
+
+# start mullvad vpn gui
+/usr/bin/mullvad-vpn &
