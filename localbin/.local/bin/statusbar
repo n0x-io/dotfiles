@@ -68,8 +68,14 @@ song() {
     printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s - %s" "$icon" "$artist" "$song"
 }
 
+updates() {
+    updates=$(checkupdates | wc -l)
+    icon=""
+    printf "^b#8FBCBB^^c#2E3440^ %s ^d^ %s" "$icon" "$updates"
+}
+
 while true; do 
-    xsetroot -name " $(cpu) $(memory) $(networkspeed) $(networkinfo) $(disk) $(song) $(datetime) "
+    xsetroot -name " $(cpu) $(memory) $(networkspeed) $(networkinfo) $(disk) $(updates) $(song) $(datetime) "
     sleep 8
 done
 
