@@ -12,9 +12,10 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		--formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-        formatting.clang_format.with({
+        null_ls.builtins.formatting.clang_format.with({
             extra_filetypes = {"inl"},
             extra_args = {"-style=file:~/.config/nvim/lua/user/lsp/settings/clang-format"},
         }),
+        null_ls.builtins.formatting.rustfmt,
 	},
 })

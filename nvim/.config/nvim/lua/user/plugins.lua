@@ -99,6 +99,9 @@ return packer.startup(function(use)
     -- VimWiki
     use { 'vimwiki/vimwiki', branch='dev'}
 
+    -- dicord fuckery
+    use 'andweeb/presence.nvim'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
