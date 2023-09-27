@@ -45,12 +45,19 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-    -- Set autocommands conditional on server_capabilities
-    local status_ok, illuminate = pcall(require, "illuminate")
-    if not status_ok then
-        return
-    end
-    illuminate.on_attach(client)
+  -- Set autocommands conditional on server_capabilities
+  if client.server_capabilities.documentHighlight then
+    vim.api.nvim_exec(
+      [[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold * lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved * lua vim.lsp.buf.clear_references()
+      augroup END
+    ]],
+      false
+    )
+  end
 end
 
 local function lsp_keymaps(bufnr)
@@ -79,7 +86,7 @@ end
 
 M.on_attach = function(client, bufnr)
     if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
     end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
@@ -88,10 +95,9 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-    return
+if status_ok then
+    M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 end
 
---M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M
