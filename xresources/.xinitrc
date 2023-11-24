@@ -40,23 +40,18 @@ picom -f &
 # restore wallpaper
 ~/.fehbg &
 
-# set display brightness for secondary monitor
-xrandr --output DP-2 --brightness .9 &
-
 # start autolocker
-xautolock -time 10 -locker slock &
+xss-lock -- slock &
+#xautolock -time 10 -locker slock &
 xset -dpms &
 xset s off &
 xset r rate 300 50 &
 
-# auto disk mounting
+numlockx &
 udiskie &
 
-# fix java for java is being java....
-export AWT_TOOLKIT=MToolkit
-export GTK_THEME=Breeze:dark
-
-# execture dwm
+# execute dwm
 while true; do
     dwm >/dev/null 2>&1
 done
+
