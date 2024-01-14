@@ -4,34 +4,41 @@ set icons
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 set cursorpreviewfmt "\033[7m"
+set shell fish
 
-# Commands
+### Commands ###
 cmd edit-config ${{
     $EDITOR ~/.config/lf/lfrc
     lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
 cmd open ${{
-    case $(file --mime-type "$(readlink -f $f)" -b) in
-	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
-	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
-        text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
-	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
-	image/svg+xml) display -- $f ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
-		setsid -f nsxiv -aio 2>/dev/null | while read -r file; do
-			[ -z "$file" ] && continue
-			lf -remote "send select \"$file\""
-			lf -remote "send toggle"
-		done &
-		;;
-	audio/*|video/x-ms-asf) mpv --volume=45 --audio-display=no $f ;;
-	video/*) setsid -f mpv --volume=45 $f -quiet >/dev/null 2>&1 ;;
-	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
-	application/pgp-encrypted) $EDITOR $fx ;;
-	application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/octet-stream|application/vnd.oasis.opendocument.spreadsheet|application/vnd.oasis.opendocument.spreadsheet-template|application/vnd.openxmlformats-officedocument.presentationml.presentation|application/vnd.oasis.opendocument.presentation-template|application/vnd.oasis.opendocument.presentation|application/vnd.ms-powerpoint|application/vnd.oasis.opendocument.graphics|application/vnd.oasis.opendocument.graphics-template|application/vnd.oasis.opendocument.formula|application/vnd.oasis.opendocument.database) setsid -f libreoffice $fx >/dev/null 2>&1 ;;
-        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
-    esac
+    switch $(file --mime-type "$(readlink -f $f)" -b)
+        case image/vnd.djvu application/pdf application/octet-stream application/postscript
+            setsid -f zathura $fx >/dev/null 2>&1 
+        case "text/*" application/json inode/x-empty application/x-subrip
+            $EDITOR $fx
+    	case image/x-xcf
+            setsid -f gimp $f >/dev/null 2>&1
+    	case image/svg+xml
+            display -- $f
+    	#case "image/*"
+        #    rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
+    	#    setsid -f nsxiv -aio 2>/dev/null | 
+        #    while read -r file [ -z "$file" ] && continue; lf -remote "send select \"$file\""; lf -remote "send toggle"; end
+    	case "audio/*" video/x-ms-asf
+            mpv --volume=45 --audio-display=no $f 
+    	case "video/*"
+            setsid -f mpv --volume=45 $f -quiet >/dev/null 2>&1 
+    	case application/pdf application/vnd.djvu "application/epub*"
+            setsid -f zathura $fx >/dev/null 2>&1 
+    	case application/pgp-encrypted
+            $EDITOR $fx 
+    	case application/vnd.openxmlformats-officedocument.wordprocessingml.document application/vnd.oasis.opendocument.text application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/octet-stream application/vnd.oasis.opendocument.spreadsheet application/vnd.oasis.opendocument.spreadsheet-template application/vnd.openxmlformats-officedocument.presentationml.presentation application/vnd.oasis.opendocument.presentation-template application/vnd.oasis.opendocument.presentation application/vnd.ms-powerpoint application/vnd.oasis.opendocument.graphics application/vnd.oasis.opendocument.graphics-template application/vnd.oasis.opendocument.formula application/vnd.oasis.opendocument.database
+            setsid -f libreoffice $fx >/dev/null 2>&1 
+        case "*"
+            for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done
+    end
 }}
 
 cmd bulkrename ${{
@@ -60,11 +67,11 @@ cmd move-parent &{{
     lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
 }}
 
-
-# Mappings and stuff
+### Mappings and stuff ###
 map C edit-config
 map J move-parent down
 map K move-parent up
 map o open;
 map <c-s> set hidden!
 map B bulkrename
+
