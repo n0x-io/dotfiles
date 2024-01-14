@@ -1,6 +1,9 @@
 # Basic Settings
 set preview
 set icons
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/scope'
+set cursorpreviewfmt "\033[7m"
 
 # Commands
 cmd edit-config ${{
@@ -52,10 +55,16 @@ cmd bulkrename ${{
     lf -remote "send $id unselect"
 }}
 
+cmd move-parent &{{
+    dironly="setlocal '$(dirname "$PWD")' dironly"
+    lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
+}}
+
+
 # Mappings and stuff
 map C edit-config
-map J :updir; down; open
-map K :updir; up; open
+map J move-parent down
+map K move-parent up
 map o open;
 map <c-s> set hidden!
 map B bulkrename

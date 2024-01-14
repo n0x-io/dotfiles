@@ -14,6 +14,10 @@ function q
     exit
 end
 
+function lf
+    command lfub
+end
+
 function cl 
     command clear && ls
 end
