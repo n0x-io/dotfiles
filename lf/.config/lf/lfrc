@@ -14,7 +14,7 @@ cmd edit-config ${{
 
 cmd open ${{
     switch $(file --mime-type "$(readlink -f $f)" -b)
-        case image/vnd.djvu application/pdf application/octet-stream application/postscript
+        case image/vnd.djvu application/pdf application/octet-stream application/postscript application/pdf application/vnd.djvu "application/epub*"
             setsid -f zathura $fx >/dev/null 2>&1 
         case "text/*" application/json inode/x-empty application/x-subrip
             $EDITOR $fx
@@ -22,49 +22,62 @@ cmd open ${{
             setsid -f gimp $f >/dev/null 2>&1
     	case image/svg+xml
             display -- $f
-    	#case "image/*"
-        #    rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
-    	#    setsid -f nsxiv -aio 2>/dev/null | 
-        #    while read -r file [ -z "$file" ] && continue; lf -remote "send select \"$file\""; lf -remote "send toggle"; end
+    	case "image/*"
+            rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*\$" |
+    	    setsid -f nsxiv -aio 2>/dev/null | 
+            while read -r file;
+                [ -z "$file" ] && continue; 
+                lf -remote "send select \"$file\""; 
+                lf -remote "send toggle"; 
+            end
     	case "audio/*" video/x-ms-asf
             mpv --volume=45 --audio-display=no $f 
     	case "video/*"
             setsid -f mpv --volume=45 $f -quiet >/dev/null 2>&1 
-    	case application/pdf application/vnd.djvu "application/epub*"
-            setsid -f zathura $fx >/dev/null 2>&1 
     	case application/pgp-encrypted
             $EDITOR $fx 
     	case application/vnd.openxmlformats-officedocument.wordprocessingml.document application/vnd.oasis.opendocument.text application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/octet-stream application/vnd.oasis.opendocument.spreadsheet application/vnd.oasis.opendocument.spreadsheet-template application/vnd.openxmlformats-officedocument.presentationml.presentation application/vnd.oasis.opendocument.presentation-template application/vnd.oasis.opendocument.presentation application/vnd.ms-powerpoint application/vnd.oasis.opendocument.graphics application/vnd.oasis.opendocument.graphics-template application/vnd.oasis.opendocument.formula application/vnd.oasis.opendocument.database
             setsid -f libreoffice $fx >/dev/null 2>&1 
         case "*"
-            for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done
+            for f in $fx 
+                setsid -f $OPENER $f >/dev/null 2>&1
+            end
     end
 }}
 
 cmd bulkrename ${{
-    tmpfile_old="$(mktemp)"
-    tmpfile_new="$(mktemp)"
-
-    [ -n "$fs" ] && fs=$(basename -a $fs) || fs=$(ls)
-
+    set tmpfile_old (mktemp)
+    set tmpfile_new (mktemp)
+    
+    if test -n "$fs"
+        set fs (basename -a $fs)
+    else
+        set fs (ls)
+    end
+    
     echo "$fs" > "$tmpfile_old"
     echo "$fs" > "$tmpfile_new"
     $EDITOR "$tmpfile_new"
-
-    [ "$(wc -l < "$tmpfile_old")" -eq "$(wc -l < "$tmpfile_new")" ] || { rm -f "$tmpfile_old" "$tmpfile_new"; exit 1; }
-
-    paste "$tmpfile_old" "$tmpfile_new" | while IFS="$(printf '\t')" read -r src dst
-    do
-        [ "$src" = "$dst" ] || [ -e "$dst" ] || mv -- "$src" "$dst"
-    done
-
+    
+    if test (wc -l < "$tmpfile_old") -eq (wc -l < "$tmpfile_new")
+        paste "$tmpfile_old" "$tmpfile_new" | while IFS="$(printf '\t')" read -r src dst
+            if test "$src" = "$dst" -o -e "$dst"
+                mv -- "$src" "$dst"
+            end
+        end
+    else
+        rm -f "$tmpfile_old" "$tmpfile_new"
+        exit 1
+    end
+    
     rm -f "$tmpfile_old" "$tmpfile_new"
     lf -remote "send $id unselect"
 }}
 
 cmd move-parent &{{
-    dironly="setlocal '$(dirname "$PWD")' dironly"
-    lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
+
+    set dironly "setlocal (dirname "$PWD") dironly"
+    lf -remote "send $id :updir; $dironly true; $argv; $dironly false; open"
 }}
 
 ### Mappings and stuff ###

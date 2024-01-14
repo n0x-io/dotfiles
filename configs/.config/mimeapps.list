@@ -41,5 +41,5 @@ image/png=nsxiv.desktop
 image/jpg=nsxiv.desktop
 application/json=codium.desktop
 application/xml=codium.desktop
-inode/directory=pcmanfm.desktop
+inode/directory=file.desktop;pcmanfm.desktop
 text/plain=codium.desktop
