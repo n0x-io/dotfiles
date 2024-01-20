@@ -45,46 +45,11 @@ cmd open ${{
     end
 }}
 
-cmd bulkrename ${{
-    set tmpfile_old (mktemp)
-    set tmpfile_new (mktemp)
-    
-    if test -n "$fs"
-        set fs (basename -a $fs)
-    else
-        set fs (ls)
-    end
-    
-    echo "$fs" > "$tmpfile_old"
-    echo "$fs" > "$tmpfile_new"
-    $EDITOR "$tmpfile_new"
-    
-    if test (wc -l < "$tmpfile_old") -eq (wc -l < "$tmpfile_new")
-        paste "$tmpfile_old" "$tmpfile_new" | while IFS="$(printf '\t')" read -r src dst
-            if test "$src" = "$dst" -o -e "$dst"
-                mv -- "$src" "$dst"
-            end
-        end
-    else
-        rm -f "$tmpfile_old" "$tmpfile_new"
-        exit 1
-    end
-    
-    rm -f "$tmpfile_old" "$tmpfile_new"
-    lf -remote "send $id unselect"
-}}
-
-cmd move-parent &{{
-
-    set dironly "setlocal (dirname "$PWD") dironly"
-    lf -remote "send $id :updir; $dironly true; $argv; $dironly false; open"
-}}
 
 ### Mappings and stuff ###
 map C edit-config
-map J move-parent down
-map K move-parent up
+map J :updir; set dironly true; down; set dironly false; open
+map K :updir; set dironly true; up; set dironly false; open
 map o open;
 map <c-s> set hidden!
-map B bulkrename
 
