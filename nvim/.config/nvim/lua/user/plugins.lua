@@ -102,6 +102,9 @@ return packer.startup(function(use)
     -- dicord fuckery
     use 'andweeb/presence.nvim'
 
+    -- LaTeX
+    use 'lervag/vimtex'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
