@@ -15,14 +15,14 @@ function q
 end
 
 function ff
-    fastfetch -l /home/n0x/Pictures/Nyarch_Transparent_BG_smol.png -c neofetch.jsonc
+    fastfetch -l ~/.config/fish/img/ff.png -c neofetch.jsonc
 end
 
 function lf
     command lfub
 end
 
-function cl 
+function cls
     command clear && ls
 end
 
