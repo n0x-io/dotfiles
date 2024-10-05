@@ -1,17 +1,21 @@
 if [ -z "$DISPLAY" ] && [ (fgconsole) -eq 1 ]; 
-    startx
+    #    startx
 end
 
 # uncomment to automatically start tmux
 if status is-interactive
 and not set -q TMUX
-    exec tmux
+#    exec tmux
 end
 
 fish_ssh_agent
 
 function q
     exit
+end
+
+function ff
+    fastfetch -l /home/n0x/Pictures/Nyarch_Transparent_BG_smol.png -c neofetch.jsonc
 end
 
 function lf
