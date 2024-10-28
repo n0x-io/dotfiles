@@ -47,13 +47,20 @@ return packer.startup(function(use)
 
     -- Colorschemes
     use "shaunsingh/nord.nvim"
+
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
-    use "hrsh7th/cmp-buffer" -- buffer completions
+    use "hrsh7th/cmp-nvim-lsp"
+
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+    use 'hrsh7th/cmp-vsnip' 
     use "hrsh7th/cmp-path" -- path completions
+    use "hrsh7th/cmp-buffer" -- buffer completions
+    use "hrsh7th/vim-vsnip" 
     use "hrsh7th/cmp-cmdline" -- cmdline completions
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
-    use "hrsh7th/cmp-nvim-lsp"
 
     -- snippets
     use "L3MON4D3/LuaSnip" --snippet engine
@@ -64,6 +71,8 @@ return packer.startup(function(use)
     use "williamboman/mason.nvim" -- simple to use language server installer
     use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
     use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+
+    use 'simrat39/rust-tools.nvim'
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
