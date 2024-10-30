@@ -76,6 +76,7 @@ return packer.startup(function(use)
 
     -- Bufferline
     use {'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons'}
+    use 'moll/vim-bbye'
 
     -- VimWiki
     use { 'vimwiki/vimwiki', branch='dev'}
