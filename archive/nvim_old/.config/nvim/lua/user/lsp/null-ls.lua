@@ -16,6 +16,5 @@ null_ls.setup({
             extra_filetypes = {"inl"},
             extra_args = {"-style=file:~/.config/nvim/lua/user/lsp/settings/clang-format"},
         }),
-        null_ls.builtins.formatting.rustfmt,
 	},
 })

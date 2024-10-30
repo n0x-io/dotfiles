@@ -46,9 +46,15 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
+    --snippet = {
+    --    expand = function(args)
+    --        luasnip.lsp_expand(args.body) -- For `luasnip` users.
+    --    end,
+    --},
+
     snippet = {
         expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+            vim.fn["vsnip#anonymous"](args.body)
         end,
     },
     mapping = {
