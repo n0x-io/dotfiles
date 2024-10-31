@@ -189,6 +189,9 @@ nvimtree.setup {
         },
         highlight_git = true,
         root_folder_modifier = ":t",
+        indent_markers = {
+            enable = true,
+        },
     },
     hijack_directories = {
         enable = true,
@@ -226,7 +229,7 @@ nvimtree.setup {
         timeout = 500,
     },
     view = {
-        width = 30,
+        width = 35,
         side = "left",
         float = {
             quit_on_focus_loss = true,
@@ -276,14 +279,10 @@ require('bufferline').setup {
         close_icon = ' ',
         left_trunc_marker = ' ',
         right_trunc_marker = ' ',
-        --- name_formatter can be used to change the buffer's label in the bufferline.
-        --- Please note some names can/will break the
-        --- bufferline so use this at your discretion knowing that it has
-        --- some limitations that will *NOT* be fixed.
-        max_name_length = 18,
-        max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+        max_name_length = 30,
+        max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
         truncate_names = true, -- whether or not tab names should be truncated
-        tab_size = 18,
+        tab_size = 25,
         diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = false, -- only applies to coc
         diagnostics_update_on_event = true, -- use nvim's diagnostic handler
@@ -317,9 +316,6 @@ require('bufferline').setup {
             reveal = {'close'}
         },
         sort_by = 'insert_after_current',
-        pick = {
-          alphabet = "abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ1234567890",
-        },
     }
 }
 
@@ -363,3 +359,7 @@ require("gitsigns").setup {
     },
 }
 
+
+require("presence").setup({
+    debounce_timeout    = 5,                         -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
+})
