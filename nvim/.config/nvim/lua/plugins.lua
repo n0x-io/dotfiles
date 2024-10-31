@@ -84,6 +84,12 @@ return packer.startup(function(use)
     -- dicord fuckery
     use 'andweeb/presence.nvim'
 
+    -- floaterm
+    use 'voldikss/vim-floaterm'
+
+    -- git gud
+    use 'lewis6991/gitsigns.nvim'
+
     -- LaTeX
     --use 'lervag/vimtex'
 

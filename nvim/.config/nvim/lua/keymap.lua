@@ -97,3 +97,10 @@ keymap("n", "<leader>q", "<cmd>Bdelete! %d<cr>", opts)
 -- toggle whitespace --
 keymap("n", "<leader>w", "<cmd>set list!<cr>", opts)
 
+-- floaterm
+keymap("n", "<F7>", ":FloatermNew<cr>", opts)
+keymap("n", "<F8>", ":FloatermPrev<cr>", opts)
+keymap("n", "<F9>", ":FloatermNext<cr>", opts)
+keymap("n", "<F12>", ":FloatermToggle<cr>", opts)
+
+

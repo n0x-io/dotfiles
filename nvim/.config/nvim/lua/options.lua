@@ -42,6 +42,8 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
+vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
+
 vim.g.vimwiki_list = {{path = '~/Documents/vimwiki', syntax = 'markdown', ext = '.md'}}
 vim.g.nord_disable_background = true
 
