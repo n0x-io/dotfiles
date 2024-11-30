@@ -39,6 +39,7 @@ x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse-m
 x-scheme-handler/mid=userapp-Thunderbird-86ACV1.desktop
 image/png=nsxiv.desktop
 image/jpg=nsxiv.desktop
+image/jpeg=nsxiv.desktop
 application/json=codium.desktop
 application/xml=codium.desktop
 inode/directory=file.desktop;pcmanfm.desktop
