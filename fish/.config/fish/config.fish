@@ -13,10 +13,6 @@ function ff
     fastfetch --logo-type kitty-direct --logo ~/.config/fish/img/ff.png -c neofetch.jsonc
 end
 
-function lf
-    command lfub
-end
-
 function cls
     command clear && ls
 end
@@ -47,14 +43,6 @@ end
 
 function ds 
     command du -sch * | sort -rh
-end
-
-function hv
-    command nmcli --ask connection up "HP VPN"
-end
-
-function hvd
-    command nmcli connection down "HP VPN"
 end
 
 function nv
