@@ -36,4 +36,12 @@
 	conflictstyle = zdiff3
 [core]
 	fsmonitor = true
-	untrackedCache = true
+    untrackedCache = true
+[log]
+    date = iso
+[apply]
+    # Remove trailing whitespaces
+    whitespace = fix
+[color "diff"]
+    whitespace = red reverse
+
