@@ -1,0 +1,39 @@
+# Specify the git user in the .gituser files to keep config the same across work and priv systems
+[include]
+    path = .gituser
+
+# global settings to improve  git and its behavior 
+# See https://blog.gitbutler.com/how-git-core-devs-configure-git/
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = master
+[diff]
+	algorithm = histogram
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[pull]
+	rebase = true
+[merge]
+	conflictstyle = zdiff3
+[core]
+	fsmonitor = true
+	untrackedCache = true
