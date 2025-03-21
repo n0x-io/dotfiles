@@ -4,6 +4,8 @@ end
 
 fish_ssh_agent
 
+umask 0077
+
 function q
     exit
 end
