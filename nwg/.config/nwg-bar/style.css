@@ -1,5 +1,5 @@
 window {
-        background-color: rgba (0, 0, 0, 1.0)
+        background-color: rgba (0, 0, 0, 00)
 }
 
 /* Outer bar container, takes all the window width/height */
@@ -9,13 +9,13 @@ window {
 
 /* Inner bar container, surrounds buttons */
 #inner-box {
-	background-color: rgba (0, 0, 0, 0.85);
+	background-color: rgba (59, 66, 82, 1);
 	border-radius: 10px;
-	border-style: none;
-	border-width: 1px;
-	border-color: rgba (156, 142, 122, 0.7);
-	padding: 5px;
-	margin: 5px
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgba (216, 222, 233, 0.7);
+	padding: 10px;
+	margin: 10px
 }
 
 button, image {
@@ -31,5 +31,5 @@ button {
 }
 
 button:hover {
-	background-color: rgba (255, 255, 255, 0.1)
+	background-color: rgba (216, 222, 233, 0.1)
 }
