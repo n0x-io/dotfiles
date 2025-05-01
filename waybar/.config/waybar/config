@@ -10,21 +10,35 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces","hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "backlight", "network", "cpu", "memory", "tray"],
+    "modules-right": ["pulseaudio", "backlight", "network", "battery", "cpu", "memory", "tray"],
 
     // Modules configuration
 
+//    "hyprland/workspaces": {
+//        "disable-scroll": true,
+//        //"all-outputs": true,
+//        "on-click": "activate",
+//        "format": "{icon}",
+//        "format-icons": {
+//            "empty": "",
+//            //"default": "",
+//            "default": "",
+//            "active": "",
+//        }
+//    },
+
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        //"all-outputs": true,
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "empty": "",
-            //"default": "",
-            "default": "",
-            "active": "",
-        }
+        "format": "{name}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        },
+        "all-outputs": true,
+        "active-only": false,
+        "sort-by-number": true
     },
     "keyboard-state": {
         "numlock": false,
@@ -79,7 +93,7 @@
         "bat": "BAT2"
     },
     "network": {
-        "interface": "enp4s0", // (Optional) To force the use of this interface
+        "interface": "wlo1", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
