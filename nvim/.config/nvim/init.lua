@@ -6,7 +6,7 @@ require "vars"
 -- Color Theme 
 vim.cmd [[
 try
-  colorscheme nord
+  colorscheme everforest
 endtry
 ]]
 
@@ -123,20 +123,20 @@ cmp.setup({
 	
 
 -- Treesitter Plugin Setup 
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { "bash", "c", "cpp", "javascript", "json", "lua", "python", "typescript", "tsx", "css", "rust", "java", "yaml", "markdown", "markdown_inline" },
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting=false,
-  },
-  ident = { enable = true }, 
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-  }
-}
+--require('nvim-treesitter.configs').setup {
+--  ensure_installed = { "bash", "c", "cpp", "javascript", "json", "python", "css", "rust", "markdown", "markdown_inline" },
+--  auto_install = true,
+--  highlight = {
+--    enable = true,
+--    additional_vim_regex_highlighting=false,
+--  },
+--  ident = { enable = true }, 
+--  rainbow = {
+--    enable = true,
+--    extended_mode = true,
+--    max_file_lines = nil,
+--  }
+--}
 
 -- nvim-tree Setup 
 -- following options are the default
@@ -252,7 +252,7 @@ nvimtree.setup {
 
 -- Statusline 
 require('lualine').setup {
-    options = { theme = 'nord' }
+    options = { theme = 'everforest' }
 }
 
 local status_ok, bufferline = pcall(require, "bufferline")
@@ -358,8 +358,3 @@ require("gitsigns").setup {
         col = 1
     },
 }
-
-
-require("presence").setup({
-    debounce_timeout    = 5,                         -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
-})

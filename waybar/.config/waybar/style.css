@@ -1,19 +1,11 @@
-@define-color base00 #181818;
-@define-color base01 #2b2e37;
-@define-color base02 #3b3e47;
-@define-color base03 #585858;
-@define-color base04 #b8b8b8;
-@define-color base05 #d8d8d8;
-@define-color base06 #e8e8e8;
-@define-color base07 #f8f8f8;
-@define-color base08 #ab4642;
-@define-color base09 #dc9656;
-@define-color base0A #f7ca88;
-@define-color base0B #a1b56c;
-@define-color base0C #86c1b9;
-@define-color base0D #7cafc2;
-@define-color base0E #ba8baf;
-@define-color base0F #a16946;
+@define-color bg_dim #1e2326;
+@define-color bg0 #272e33;
+@define-color bg2 #374145;
+@define-color fg #D3C6AA;
+@define-color red #E67E80;
+@define-color blue #7fbbb3;
+@define-color orange #e69875;
+@define-color bg4 #495156;
 
 * {
     transition: none;
@@ -24,9 +16,9 @@
     font-family: 'Hack JBM Ligatured', "Font Awesome 6 Free";
     font-size: 1.2em;
     font-weight: 400;
-    color: @base04;
+    color: @fg;
     border-radius: 10px;
-    background: @base01;
+    background: @bg0;
 }
 
 #workspaces {
@@ -36,7 +28,7 @@
 #workspaces button {
     margin: 4px 0;
     padding: 0 4px;
-    color: @base05;
+    color: @fg;
 }
 
 #workspaces button.visible {
@@ -44,22 +36,22 @@
 
 #workspaces button.active {
     border-radius: 10px;
-    background-color: @base03;
+    background-color: @bg4;
 }
 
 #workspaces button.urgent {
-    color: rgba(238, 46, 36, 1);
+    color: @red;
 }
 
 #tray {
     margin: 4px 4px 4px 4px;
     border-radius: 4px;
-    background-color: @base02;
+    background-color: @bg2;
 }
 
 #tray * {
     padding: 0 6px;
-    border-left: 1px solid @base00;
+    border-left: 1px solid @bg_dim;
 }
 
 #tray *:first-child {
@@ -69,17 +61,17 @@
 #mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature, #language{
     margin: 4px 2px;
     padding: 0 6px;
-    background-color: @base02;
+    background-color: @bg2;
     border-radius: 4px;
     min-width: 20px;
 }
 
 #pulseaudio.muted {
-    color: @base0F;
+    color: @orange;
 }
 
 #pulseaudio.bluetooth {
-    color: @base0C;
+    color: @blue;
 }
 
 #clock {
@@ -89,7 +81,7 @@
 }
 
 #temperature.critical {
-    color: @base0F;
+    color: @orange;
 }
 
 #window {

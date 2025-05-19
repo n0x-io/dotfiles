@@ -12,14 +12,14 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg0:    #2E3440F2;
-    bg1:    #3B4252;
-    bg2:    #4C566A80;
-    bg3:    #88C0D0F2;
-    fg0:    #D8DEE9;
-    fg1:    #ECEFF4;
-    fg2:    #D8DEE9;
-    fg3:    #4C566A;
+    bgdark:           #272E33;
+    bgalt:            #3C4841;
+    bggreen:          #56635F;
+    fg0:              #A7C080;
+    fgalt:            #4f5b58;
+
+    accent-color:     #A7C080;
+    urgent-color:     #DBBC7F;
     
     font:   "Roboto 12";
 
@@ -32,7 +32,7 @@ configuration {
 }
 
 element selected {
-    text-color: @bg1;
+    text-color: @bgalt;
 }
 
 window {
@@ -40,7 +40,7 @@ window {
     width:          720px;
     border-radius:  10px;
     
-    background-color:   @bg0;
+    background-color:   @bgdark;
 }
 
 mainbox {
@@ -48,8 +48,8 @@ mainbox {
 }
 
 inputbar {
-    background-color:   @bg1;
-    border-color:       @bg3;
+    background-color:   @bgalt;
+    border-color:       @bggreen;
 
     border:         2px;
     border-radius:  8px;
@@ -60,19 +60,19 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg2;
+    text-color: @fg0;
 }
 
 entry {
     placeholder:        "Search";
-    placeholder-color:  @fg3;
+    placeholder-color:  @fgalt;
 }
 
 message {
     margin:             12px 0 0;
     border-radius:      8px;
-    border-color:       @bg2;
-    background-color:   @bg2;
+    border-color:       @bggreen;
+    background-color:   @bggreen;
 }
 
 textbox {
@@ -96,15 +96,15 @@ element {
 }
 
 element normal active {
-    text-color: @bg3;
+    text-color: @fg0;
 }
 
 element alternate active {
-    text-color: @bg3;
+    text-color: @fg0;
 }
 
 element selected normal, element selected active {
-    background-color:   @bg3;
+    background-color:   @fg0;
 }
 
 element-icon {

@@ -43,12 +43,19 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
 
     -- Colorschemes
-    use "shaunsingh/nord.nvim"
+    --use "shaunsingh/nord.nvim"
+    use({
+        "neanias/everforest-nvim",
+        -- Optional; default configuration will be used if setup isn't called.
+        config = function()
+            require("everforest").setup()
+        end,
+    })
 
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
-    use "williamboman/mason.nvim" -- simple to use language server installer
-    use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
+    use "mason-org/mason.nvim" -- simple to use language server installer
+    use "mason-org/mason-lspconfig.nvim" -- simple to use language server installer
 
     use 'simrat39/rust-tools.nvim'
 
@@ -61,12 +68,15 @@ return packer.startup(function(use)
     -- Useful completion sources:
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
-    use 'hrsh7th/cmp-vsnip'                             
-    use 'hrsh7th/cmp-path'                              
-    use 'hrsh7th/vim-vsnip'                             
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/vim-vsnip'
     use "hrsh7th/cmp-cmdline" -- cmdline completions
 
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
     use 'nvim-tree/nvim-web-devicons'
 
@@ -84,7 +94,7 @@ return packer.startup(function(use)
     use { 'vimwiki/vimwiki', branch='dev'}
 
     -- dicord fuckery
-    use 'andweeb/presence.nvim'
+--    use 'andweeb/presence.nvim'
 
     -- floaterm
     use 'voldikss/vim-floaterm'
@@ -93,7 +103,7 @@ return packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim'
 
     -- LaTeX
-    use 'lervag/vimtex'
+--    use 'lervag/vimtex'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
