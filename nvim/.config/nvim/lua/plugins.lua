@@ -93,8 +93,27 @@ return packer.startup(function(use)
     -- VimWiki
     use { 'vimwiki/vimwiki', branch='dev'}
 
+    -- Dashboard
+    use {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                -- config
+            }
+        end,
+        requires = {'nvim-tree/nvim-web-devicons'}
+    }
+
+    -- Telescope
+    use "nvim-lua/plenary.nvim"
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
     -- dicord fuckery
---    use 'andweeb/presence.nvim'
+    use 'andweeb/presence.nvim'
 
     -- floaterm
     use 'voldikss/vim-floaterm'
@@ -103,7 +122,7 @@ return packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim'
 
     -- LaTeX
---    use 'lervag/vimtex'
+    use 'lervag/vimtex'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
