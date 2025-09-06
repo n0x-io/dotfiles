@@ -21,6 +21,8 @@ require("mason").setup({
     }
 })
 require("mason-lspconfig").setup()
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.pylsp.setup{}
 
 -- Rust Tools Setup
 local rt = require("rust-tools")
