@@ -44,7 +44,7 @@ function tree
 end
 
 function ds 
-    command du -sch * | sort -rh
+    command du -sch (ls -A) | sort -rh
 end
 
 function nv
