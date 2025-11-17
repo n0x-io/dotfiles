@@ -29,12 +29,19 @@ keymap("n", "<Down>", "<Nop>", opts)
 keymap("n", "<Left>", "<Nop>", opts)
 keymap("n", "<Right>", "<Nop>", opts)
 
--- Remap some language specific stuff --
+-- German ISO-DE keyboard friendly mappings --
+-- On German keyboard, { and } require AltGr+7/0 which is awkward
+-- These mappings make paragraph navigation much easier
 keymap("n", "ü", "{", opts)
 keymap("n", "<C-ü>", "<C-{>", opts)
 
 keymap("n", "+", "}", opts)
 keymap("n", "<C-+>", "<C-}>", opts)
+
+-- Alternative: You could also use ö and ä for other bracket operations
+-- Uncomment if needed:
+-- keymap("n", "ö", "[", opts)
+-- keymap("n", "ä", "]", opts)
 
 -- Normal --
 -- Better window navigation
@@ -45,11 +52,11 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+-- Resize with hjkl instead of arrows (stay disciplined!)
+keymap("n", "<C-S-k>", ":resize -2<CR>", opts)
+keymap("n", "<C-S-j>", ":resize +2<CR>", opts)
+keymap("n", "<C-S-h>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-S-l>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -64,6 +71,12 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
+-- Disable arrow keys in visual mode too
+keymap("v", "<Up>", "<Nop>", opts)
+keymap("v", "<Down>", "<Nop>", opts)
+keymap("v", "<Left>", "<Nop>", opts)
+keymap("v", "<Right>", "<Nop>", opts)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -74,6 +87,12 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
+-- Disable arrow keys in visual block mode
+keymap("x", "<Up>", "<Nop>", opts)
+keymap("x", "<Down>", "<Nop>", opts)
+keymap("x", "<Left>", "<Nop>", opts)
+keymap("x", "<Right>", "<Nop>", opts)
+
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)

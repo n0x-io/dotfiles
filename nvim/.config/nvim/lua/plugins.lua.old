@@ -57,7 +57,7 @@ return packer.startup(function(use)
     use "mason-org/mason.nvim" -- simple to use language server installer
     use "mason-org/mason-lspconfig.nvim" -- simple to use language server installer
 
-    use 'simrat39/rust-tools.nvim'
+    use 'mrcjkb/rustaceanvim'
 
     -- Completion framework:
     use 'hrsh7th/nvim-cmp' 
