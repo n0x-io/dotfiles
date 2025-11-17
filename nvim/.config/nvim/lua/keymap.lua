@@ -108,7 +108,7 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- close buffer --
-keymap("n", "<leader>q", "<cmd>Bdelete! %d<cr>", opts)
+keymap("n", "<leader>q", "<cmd>Bdelete!<cr>", opts)
 
 -- toggle whitespace --
 keymap("n", "<leader>w", "<cmd>set list!<cr>", opts)
