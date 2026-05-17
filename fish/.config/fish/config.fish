@@ -1,5 +1,5 @@
 if [ -z "$DISPLAY" ] && [ (fgconsole) -eq 1 ]; 
-    Hyprland
+    start-hyprland
 end
 
 fish_ssh_agent
