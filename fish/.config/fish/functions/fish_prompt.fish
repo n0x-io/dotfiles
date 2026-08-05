@@ -1,20 +1,19 @@
 set fish_prompt_pwd_dir_length 0
 set __fish_git_prompt_show_informative_status 1
 
-# Fish command and parameter colors
-set fish_color_command green
-set fish_color_param $fish_color_normal
+# Command and parameter colors come from fish_variables (Cursor Dark)
 
 # Git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showupstream 'yes'
 
-set __fish_git_prompt_color_branch brown
-set __fish_git_prompt_color_dirtystate FCBC47
-set __fish_git_prompt_color_stagedstate yellow
-set __fish_git_prompt_color_upstream cyan
-set __fish_git_prompt_color_cleanstate green
-set __fish_git_prompt_color_invalidstate red
+# Colors mirror Cursor's git decorations
+set __fish_git_prompt_color_branch 569CD6
+set __fish_git_prompt_color_dirtystate E2C08D
+set __fish_git_prompt_color_stagedstate 73C991
+set __fish_git_prompt_color_upstream 4EC9B0
+set __fish_git_prompt_color_cleanstate 73C991
+set __fish_git_prompt_color_invalidstate E4676B
 
 # Git Characters
 set __fish_git_prompt_char_dirtystate '*'
@@ -41,9 +40,9 @@ end
 
 function _prompt_color_for_status
   if test $argv[1] -eq 0
-    echo magenta
+    echo C586C0
   else
-    echo red
+    echo F14C4C
   end
 end
 
@@ -51,7 +50,7 @@ function fish_prompt
   set -l last_status $status
 
   # username and hostname
-  _print_in_color "┏["$USER"@"(prompt_hostname)"]" blue
+  _print_in_color "┏["$USER"@"(prompt_hostname)"]" 569CD6
 
   # current working dir
   _print_in_color " "(prompt_pwd) $fish_color_cwd
@@ -59,10 +58,10 @@ function fish_prompt
   __fish_git_prompt " (%s)"
 
   # beginning of new line
-  _print_in_color "\n┗" blue
+  _print_in_color "\n┗" 569CD6
 
   # time information
-  _print_in_color " "(date "+%H:%M:%S") green
+  _print_in_color " "(date "+%H:%M:%S") 73C991
 
   # little error that indicates the status of the previous command
   _print_in_color " ❯ " (_prompt_color_for_status $last_status)
