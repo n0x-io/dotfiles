@@ -6,7 +6,7 @@ configuration {
     modi: "combi,run,drun";
 
     show-icons: true;
-    icon-theme: "Nordzy-green-dark";
+    icon-theme: "Papirus-Dark";
 }
 
 @theme "/dev/null"
