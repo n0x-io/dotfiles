@@ -7,8 +7,9 @@ hl.config({
 		gaps_out = 10,
 		border_size = 2,
 		col = {
-			active_border = { colors = { "rgba(7fbbb3ee)", "rgba(a7c080ee)" }, angle = 45 },
-			inactive_border = "rgba(384b55aa)",
+			-- Cursor Dark: accent blue gradient, neutral dark inactive
+			active_border = { colors = { "rgba(2472c8ee)", "rgba(3b8eeaee)" }, angle = 45 },
+			inactive_border = "rgba(2b2b2baa)",
 		},
 		resize_on_border = false,
 		allow_tearing = false,

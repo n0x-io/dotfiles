@@ -1,11 +1,12 @@
-@define-color bg_dim #1e2326;
-@define-color bg0 #272e33;
-@define-color bg2 #374145;
-@define-color fg #D3C6AA;
-@define-color red #E67E80;
-@define-color blue #7fbbb3;
-@define-color orange #e69875;
-@define-color bg4 #495156;
+/* Cursor Dark */
+@define-color bg_dim #141414;
+@define-color bg0 #181818;
+@define-color bg2 #2b2b2b;
+@define-color fg #cccccc;
+@define-color red #f14c4c;
+@define-color blue #3b8eea;
+@define-color orange #e2c08d;
+@define-color bg4 #2472c8;
 
 * {
     transition: none;
@@ -37,6 +38,8 @@
 #workspaces button.active {
     border-radius: 10px;
     background-color: @bg4;
+    /* @fg on the accent blue is too low-contrast to read */
+    color: #ffffff;
 }
 
 #workspaces button.urgent {
