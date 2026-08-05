@@ -69,3 +69,5 @@ application/x-xz=xarchiver.desktop
 application/x-lzma=xarchiver.desktop
 application/x-iso9660-image=xarchiver.desktop
 application/vnd.rar=xarchiver.desktop
+x-scheme-handler/wootwoot=wootility.desktop
+x-scheme-handler/web+wootwoot=wootility.desktop
