@@ -22,7 +22,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   install = {
-    colorscheme = { "everforest" },
+    colorscheme = { "vscode" },
   },
   checker = {
     enabled = true,

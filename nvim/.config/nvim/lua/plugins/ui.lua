@@ -111,11 +111,37 @@ return {
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "neanias/everforest-nvim" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "Mofiqul/vscode.nvim" },
     config = function()
+      -- Cursor Dark, deliberately mirroring the tmux status bar: same #181818
+      -- bar, same #2b2b2b raised segments, mode colour from the shared palette.
+      local bar, raised, text, dim = "#181818", "#2b2b2b", "#cccccc", "#9d9d9d"
+
+      local function mode(bg, fg)
+        return {
+          a = { bg = bg, fg = fg or "#ffffff", gui = "bold" },
+          b = { bg = raised, fg = text },
+          c = { bg = bar, fg = dim },
+        }
+      end
+
+      local cursor_dark = {
+        normal = mode("#2472c8"),
+        insert = mode("#0dbc79"),
+        visual = mode("#bc3fbc"),
+        replace = mode("#cd3131"),
+        -- dark text on yellow; white would be unreadable here
+        command = mode("#e5e510", "#181818"),
+        inactive = {
+          a = { bg = bar, fg = "#666666" },
+          b = { bg = bar, fg = "#666666" },
+          c = { bg = bar, fg = "#666666" },
+        },
+      }
+
       require('lualine').setup {
         options = {
-          theme = 'everforest',
+          theme = cursor_dark,
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
         }
