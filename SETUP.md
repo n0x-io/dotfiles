@@ -68,6 +68,11 @@ ln -sf /usr/share/themes/Orchis-Dark-Compact/gtk-4.0/gtk.css ~/.config/gtk-4.0/g
 ln -sf /usr/share/themes/Orchis-Dark-Compact/gtk-4.0/assets  ~/.config/gtk-4.0/assets
 ```
 
+`nwg-look` can do the symlink step for you — `nwg/.config/nwg-look/config` already
+has `export-gtk4-symlinks: true`. Set the gsettings values above first, then run
+`nwg-look` and hit Apply; it writes `.gtkrc-2.0`, both `settings.ini` files and the
+GTK4 symlinks from those values.
+
 ### Window buttons
 
 Both `settings.ini` files set `gtk-decoration-layout=close,minimize,maximize:`
