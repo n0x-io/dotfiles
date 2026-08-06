@@ -10,36 +10,36 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces","hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "backlight", "network", "battery", "cpu", "memory", "tray"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "tray"],
 
     // Modules configuration
 
-//    "hyprland/workspaces": {
-//        "disable-scroll": true,
-//        //"all-outputs": true,
-//        "on-click": "activate",
-//        "format": "{icon}",
-//        "format-icons": {
-//            "empty": "",
-//            //"default": "",
-//            "default": "",
-//            "active": "",
-//        }
-//    },
-
     "hyprland/workspaces": {
-        "format": "{name}",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
-        },
-        "all-outputs": true,
-        "active-only": false,
-        "sort-by-number": true
+        "disable-scroll": true,
+        //"all-outputs": true,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "empty": "",
+            //"default": "",
+            "default": "",
+            "active": "",
+        }
     },
+
+//    "hyprland/workspaces": {
+//        "format": "{name}",
+//        "persistent_workspaces": {
+//            "1": [],
+//            "2": [],
+//            "3": [],
+//            "4": [],
+//            "5": []
+//        },
+//        "all-outputs": true,
+//        "active-only": false,
+//        "sort-by-number": true
+//    },
     "keyboard-state": {
         "numlock": false,
         "capslock": false,
@@ -93,7 +93,6 @@
         "bat": "BAT2"
     },
     "network": {
-        "interface": "wlo1", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
@@ -124,13 +123,13 @@
         "tooltip": false,
         "format": "{} {icon}",
         "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span> ",
+            "notification": "<span foreground='#f14c4c'><sup></sup></span> ",
             "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span> ",
+            "dnd-notification": "<span foreground='#f14c4c'><sup></sup></span> ",
             "dnd-none": "",
-            "inhibited-notification": "<span foreground='red'><sup></sup></span> ",
+            "inhibited-notification": "<span foreground='#f14c4c'><sup></sup></span> ",
             "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span> ",
+            "dnd-inhibited-notification": "<span foreground='#f14c4c'><sup></sup></span> ",
             "dnd-inhibited-none": ""
         },
         "return-type": "json",
@@ -149,6 +148,13 @@
         },
         "exec-if": "which waybar-updates",
         "exec": "waybar-updates --interval-seconds 5 --network-interval-seconds 300"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     }
 }
 

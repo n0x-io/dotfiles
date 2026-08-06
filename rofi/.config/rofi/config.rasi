@@ -6,20 +6,21 @@ configuration {
     modi: "combi,run,drun";
 
     show-icons: true;
-    icon-theme: "Nordzy-green-dark";
+    icon-theme: "Papirus-Dark";
 }
 
 @theme "/dev/null"
 
+/* Cursor Dark */
 * {
-    bgdark:           #272E33;
-    bgalt:            #3C4841;
-    bggreen:          #56635F;
-    fg0:              #A7C080;
-    fgalt:            #4f5b58;
+    bgdark:           #181818;
+    bgalt:            #2b2b2b;
+    bgraised:         #313131;
+    fg0:              #cccccc;
+    fgalt:            #6e6e6e;
 
-    accent-color:     #A7C080;
-    urgent-color:     #DBBC7F;
+    accent-color:     #2472c8;
+    urgent-color:     #e2c08d;
     
     font:   "Roboto 12";
 
@@ -32,7 +33,7 @@ configuration {
 }
 
 element selected {
-    text-color: @bgalt;
+    text-color: #ffffff;
 }
 
 window {
@@ -49,7 +50,7 @@ mainbox {
 
 inputbar {
     background-color:   @bgalt;
-    border-color:       @bggreen;
+    border-color:       @bgraised;
 
     border:         2px;
     border-radius:  8px;
@@ -60,7 +61,7 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg0;
+    text-color: @accent-color;
 }
 
 entry {
@@ -71,8 +72,8 @@ entry {
 message {
     margin:             12px 0 0;
     border-radius:      8px;
-    border-color:       @bggreen;
-    background-color:   @bggreen;
+    border-color:       @bgraised;
+    background-color:   @bgraised;
 }
 
 textbox {
@@ -96,15 +97,15 @@ element {
 }
 
 element normal active {
-    text-color: @fg0;
+    text-color: @accent-color;
 }
 
 element alternate active {
-    text-color: @fg0;
+    text-color: @accent-color;
 }
 
 element selected normal, element selected active {
-    background-color:   @fg0;
+    background-color:   @accent-color;
 }
 
 element-icon {

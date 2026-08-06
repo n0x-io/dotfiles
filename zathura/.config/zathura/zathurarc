@@ -13,3 +13,53 @@ map J zoom out
 map i recolor
 map p print
 map g goto top
+
+# ==========================
+# ===    Cursor Dark     ===
+# ==========================
+# bg #181818 | raised #2b2b2b | popup #202020 | text #cccccc
+# accent #2472c8 | selection #264f78
+
+# Chrome
+set default-bg              "#181818"
+set default-fg              "#cccccc"
+set statusbar-bg            "#2b2b2b"
+set statusbar-fg            "#cccccc"
+set inputbar-bg             "#181818"
+set inputbar-fg             "#cccccc"
+set render-loading-bg       "#181818"
+set render-loading-fg       "#9d9d9d"
+
+# Notifications. Error/warning backgrounds are VS Code's input-validation
+# colors, so the error tint matches dunst's critical notifications.
+set notification-bg         "#2b2b2b"
+set notification-fg         "#cccccc"
+set notification-error-bg   "#5a1d1d"
+set notification-error-fg   "#ffffff"
+set notification-warning-bg "#352a05"
+set notification-warning-fg "#ffffff"
+
+# Completion and index reuse the popup/selection colors from nvim
+set completion-bg           "#202020"
+set completion-fg           "#cccccc"
+set completion-group-bg     "#181818"
+set completion-group-fg     "#9d9d9d"
+set completion-highlight-bg "#264f78"
+set completion-highlight-fg "#ffffff"
+set index-bg                "#181818"
+set index-fg                "#cccccc"
+set index-active-bg         "#264f78"
+set index-active-fg         "#ffffff"
+
+# Search: every match subtle, the current one in the accent blue
+set highlight-color         "#264f78"
+set highlight-active-color  "#2472c8"
+
+# Render the document itself dark; 'i' (mapped above) toggles it back off.
+# Despite the names, lightcolor is what LIGHT areas become (the page
+# background) and darkcolor is what DARK areas become (the text).
+set recolor                 true
+set recolor-lightcolor      "#181818"
+set recolor-darkcolor       "#cccccc"
+# Keep colored figures and links recognisable instead of crushing them to mono
+set recolor-keephue         true

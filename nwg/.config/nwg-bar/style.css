@@ -8,12 +8,13 @@ window {
 }
 
 /* Inner bar container, surrounds buttons */
+/* Cursor Dark: #181818 panel, #cccccc outline */
 #inner-box {
-	background-color: rgba (59, 66, 82, 1);
+	background-color: rgba (24, 24, 24, 1);
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 2px;
-	border-color: rgba (216, 222, 233, 0.7);
+	border-color: rgba (204, 204, 204, 0.7);
 	padding: 10px;
 	margin: 10px
 }
@@ -31,5 +32,5 @@ button {
 }
 
 button:hover {
-	background-color: rgba (216, 222, 233, 0.1)
+	background-color: rgba (204, 204, 204, 0.1)
 }
